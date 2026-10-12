@@ -1,0 +1,6 @@
+runtime/
+reports/
+*.local.json
+.env
+*.pfx
+*.key
