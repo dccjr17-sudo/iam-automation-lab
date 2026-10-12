@@ -1,0 +1,24 @@
+# Personal exercise evidence
+
+- `01-read-only-inventory.png`: Learner ran Export-LabUsers.ps1 against the designated lab tenant. Tenant check passed; seven users exported, five enabled, two disabled, zero unknown enabled states. No users or groups changed. Raw inventory CSV is local and excluded from publication.
+- `02-user-creation-preview.png`: Learner previewed LAB Automation Joiner 001 with lab.auto.joiner-001 sign-in alias, department IAM-Automation-Lab, and marker LAB-AUTO-001. Preview stated no connection or changes performed; planned initial state enabled with no licenses or roles assigned.
+- `03-user-created.png`: Learner applied New-LabUser.ps1. Tenant check passed, Graph creation succeeded, and read-back verified the designated user and enabled state. Local object reference was saved; no password was displayed or saved. This is live Entra evidence, not a simulation.
+- `04-group-membership-preview.png`: Learner previewed the designated joiner user membership in LAB-IAM-Automation-Joiners. Assigned security group, mail disabled, role assignment disabled. Preview performed no connection or changes.
+- `05-group-membership-applied.png`: Learner applied Set-LabGroupMembership.ps1. Tenant check passed, dedicated lab security group was created, membership was added, and read-back verification passed. The script assigned no licenses, applications, or directory roles.
+- `06-membership-repeat.png`: Learner reran membership apply. Tenant check passed, existing membership was detected without duplicate addition, and membership verification passed.
+- `07-user-disable-preview.png`: Learner previewed disabling the designated lab joiner user. Planned accountEnabled false; membership retained. No connection or changes performed.
+- `08-user-disabled.png`: Learner applied Disable-LabUser.ps1. Tenant check passed, designated lab user was disabled, and read-back verified accountEnabled false. Group membership retained; existing sessions were not revoked.
+- `09-role-report.png`: Learner exported three direct active directory role assignments. Tenant check passed. Read-only report excludes group member expansion and PIM eligibility; raw CSV remains local.
+- `10-mfa-registration-report.png`: Read-only registration report returned five users: five registered, zero not registered, zero unknown. Registration is not enforcement; disabled users excluded and reporting may lag.
+- `11-stale-account-report.png`: Read-only 90-day review exported eight users: zero stale candidates, six recent successful sign-ins, two unknown history. Missing history was not classified as stale; no accounts changed.
+- `12-final-user-inventory.png`: Final read-only inventory returned eight users: five enabled, three disabled, zero unknown. Counts align with adding and then disabling one lab user.
+- `13-membership-removal-preview.png`: Learner previewed removal of the designated lab group membership. Disabled-user prerequisite stated; user and group retained. No connection or changes performed.
+- `14-membership-removed.png`: Learner applied leaver membership cleanup. Tenant check passed, designated membership removed, removal verified, and user read-back confirmed retained and disabled. Existing sessions and other access are outside coverage.
+- `15-membership-removal-repeat.png`: Learner repeated leaver cleanup. Membership already absent, no removal performed, absence verification passed, and user retained and disabled verified.
+- `16-mover-prepare-preview.png`: Learner previewed preparation of dedicated Team A and Team B mover groups, staging the designated disabled user in Team A. No connection or changes performed.
+- `17-mover-prepared.png`: Learner applied preparation. Tenant check passed; Team A and Team B groups created, user staged in Team A, preparation verified, user retained and disabled verified.
+- `18-mover-transfer-preview.png`: Learner previewed removal and verification of Team A membership followed by addition and verification of Team B membership. Designated user remains disabled; no connection or changes performed.
+- `19-mover-transferred.png`: Learner applied Move. Tenant check passed; Team A membership removed and Team B membership added. Mover verification passed: A absent, B present. User retained and disabled verified.
+- `20-mover-repeat.png`: Learner repeated Move. Team A already absent and Team B already present; final membership verification passed and disabled user retained. No membership writes required.
+- `21-mover-cleanup-preview.png`: Learner previewed removal of both mover memberships while retaining the user and groups. No connection or changes performed.
+- `22-mover-cleaned-up.png`: Learner applied Cleanup. Team A already absent, Team B removed. Both memberships verified absent; user retained and disabled verified. Groups retained.
